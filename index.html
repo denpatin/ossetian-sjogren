@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="os">
+<head>
+  <meta charset="UTF-8">
+  <title>Ирон Алфавит</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <style>
+    textarea {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body onload="initialize();">
+<label for="input">Нырыккон алфавит:</label><br/>
+<textarea id="input"
+          rows="10"
+          cols="120"
+          onkeyup="transform(this.value);">
+</textarea>
+<br/>
+<label for="output">Шёгрены алфавит:</label><br/>
+<textarea id="output"
+          rows="10"
+          cols="120">
+</textarea>
+<script type="text/javascript">
+  let initString = 'Зæрин хур йæ тынтæ нывæнды фæлмæн\n' +
+      'Нæ фыдæлты рагон уæзæгыл рæдауæй…\n' +
+      'Арвы бын калы, фæрдыгау, тæмæн\n' +
+      'Ирыстон йæ адæмты фарнæй.\n\n' +
+      'Заманты тарæй æрттивы, зынгау,\n' +
+      'Дæ уидаг — нæ Ивгъуыд, нæ Абон, нæ Фидæн…\n' +
+      'Барвæсс нæ куывдыл, Хуыцæутты Хуыцау!\n' +
+      'Уастырджи, рафæлгæс, табу — Дæхицæн!'
+
+  function transform(input) {
+    const original = [
+      'гъ', 'дз', 'дж', 'къ', 'пъ', 'тъ', 'хъ', 'цъ', 'чъ',
+      'ае', 'ӕ', 'æ', 'и', 'й', 'ы', 'у',
+      'Гъ', 'Дз', 'Дж', 'Къ', 'Пъ', 'Тъ', 'Хъ', 'Цъ', 'Чъ',
+      'Ае', 'Ӕ', 'Æ', 'И', 'Й', 'Ы', 'У',
+      'ГЪ', 'ДЗ', 'ДЖ', 'КЪ', 'ПЪ', 'ТЪ', 'ХЪ', 'ЦЪ', 'ЧЪ'
+    ];
+    const converted = [
+      'ҕ', 'ꚉ', 'ԫ', 'ӄ', 'ҧ', 'ꚋ', 'ԛ', 'ҵ', 'ꚓ',
+      'ӕ', 'ӕ', 'ӕ', 'і', 'ј', 'ѵ', 'ў',
+      'Ҕ', 'Ꚉ', 'ԫ', 'Ӄ', 'Ҧ', 'Ꚋ', 'Ԛ', 'Ҵ', 'Ꚓ',
+      'Ӕ', 'Ӕ', 'Ӕ', 'І', 'Ј', 'Ѵ', 'Ў',
+      'Ҕ', 'Ꚉ', 'ԫ', 'Ӄ', 'Ҧ', 'Ꚋ', 'Ԛ', 'Ҵ', 'Ꚓ'
+    ];
+    for (let i = 0; i < original.length; i++) {
+      input = input.replace(new RegExp(original[i], 'g'), converted[i]);
+    }
+    document.getElementById('output').value = input;
+  }
+
+  function initialize() {
+    document.getElementById('input').value = initString;
+    transform(initString);
+  }
+</script>
+</body>
+</html>
