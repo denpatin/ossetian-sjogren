@@ -1,1 +1,0 @@
-# ossetian-sjogren
